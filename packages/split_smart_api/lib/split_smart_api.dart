@@ -1,8 +1,4 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library;
-
-export 'src/split_smart_api_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/models/models.dart';
+export 'src/core/core.dart';
+export 'src/services/services.dart';
+export 'src/split_smart_api_client.dart';
