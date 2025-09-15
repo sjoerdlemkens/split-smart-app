@@ -7,19 +7,14 @@ class AuthService {
   AuthService(this._apiClient);
 
   /// Login user
-  Future<LoginResponse> login(LoginRequest request) async {
-    final response = await _apiClient.post<LoginResponse>(
+  Future<void> login(LoginRequest request) async {
+    final authTokens = await _apiClient.post<AuthTokens>(
       'auth/login',
       data: request.toJson(),
-      fromJson: LoginResponse.fromJson,
+      fromJson: AuthTokens.fromJson,
     );
 
     // Store the token in the API client for future requests
-    _apiClient.setAuthTokens(
-      accessToken: response.accessToken,
-      refreshToken: response.refreshToken,
-    );
-
-    return response;
+    _apiClient.setAuthTokens(authTokens);
   }
 }

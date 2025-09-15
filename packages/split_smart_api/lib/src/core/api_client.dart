@@ -1,8 +1,5 @@
-// ignore_for_file: unnecessary_this
-
 import 'package:dio/dio.dart';
-import 'package:split_smart_api/src/core/api_client_exception.dart';
-import 'package:split_smart_api/src/core/core.dart';
+import 'package:split_smart_api/split_smart_api.dart';
 
 // HTTP client wrapper
 class ApiClient {
@@ -30,7 +27,7 @@ class ApiClient {
     // Add token refresh interceptor
     _tokenRefreshInterceptor = TokenRefreshInterceptor(
       dio: _dio,
-      tokenStorage: this._tokenStorage,
+      tokenStorage: _tokenStorage,
       onTokenRefreshFailed: onTokenRefreshFailed,
     );
 
@@ -67,14 +64,9 @@ class ApiClient {
   }
 
   /// Set the authentication tokens
-  Future<void> setAuthTokens({
-    required String accessToken,
-    String? refreshToken,
-  }) async {
-    await _tokenStorage.saveAccessToken(accessToken);
-    if (refreshToken != null) {
-      await _tokenStorage.saveRefreshToken(refreshToken);
-    }
+  Future<void> setAuthTokens(AuthTokens authTokens) async {
+    await _tokenStorage.saveAccessToken(authTokens.accessToken);
+    await _tokenStorage.saveRefreshToken(authTokens.refreshToken);
   }
 
   /// Make a POST request

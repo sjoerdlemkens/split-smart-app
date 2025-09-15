@@ -1,17 +1,17 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'login_response.g.dart';
+part 'auth_tokens.g.dart';
 
 @JsonSerializable(createToJson: false)
-class LoginResponse {
+class AuthTokens {
   final String accessToken;
   final String refreshToken;
 
-  LoginResponse({
+  AuthTokens({
     required this.accessToken,
     required this.refreshToken,
   });
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseFromJson(json);
+  factory AuthTokens.fromJson(Map<String, dynamic> json) =>
+      _$AuthTokensFromJson(json);
 }

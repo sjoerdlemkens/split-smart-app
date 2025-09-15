@@ -21,9 +21,7 @@ class AuthenticationRepository {
         password: password,
       );
 
-      // TODO: Do something with the response 
-      final response = await _apiClient.auth.login(request);
-      print(response);
+      await _apiClient.auth.login(request);
     } on ApiException catch (e) {
       throw LoginFailure.fromException(e);
     } catch (e) {
