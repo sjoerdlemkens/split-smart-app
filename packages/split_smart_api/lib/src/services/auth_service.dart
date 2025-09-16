@@ -9,7 +9,7 @@ class AuthService {
   /// Login user
   Future<void> login(LoginRequest request) async {
     final authTokens = await _apiClient.post<AuthTokens>(
-      'auth/login',
+      '/auth/login',
       data: request.toJson(),
       fromJson: AuthTokens.fromJson,
     );

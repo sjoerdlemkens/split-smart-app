@@ -1,10 +1,10 @@
 import 'package:auth_repository/src/auth_repository_exception.dart';
 import 'package:split_smart_api/split_smart_api.dart';
 
-class AuthenticationRepository {
+class AuthRepository {
   final SplitSmartApi _apiClient;
 
-  AuthenticationRepository({
+  AuthRepository({
     SplitSmartApi? apiClient,
   }) : _apiClient = apiClient ?? SplitSmartApi.development();
 
@@ -15,6 +15,8 @@ class AuthenticationRepository {
     required String email,
     required String password,
   }) async {
+    print(email);
+    print(password);
     try {
       final request = LoginRequest(
         email: email,

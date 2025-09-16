@@ -162,6 +162,7 @@ class ApiClient {
 
   /// Handle Dio exceptions and convert to appropriate API exceptions
   ApiException _handleDioException(DioException e) {
+    print(e);
     if (e.type == DioExceptionType.connectionTimeout ||
         e.type == DioExceptionType.sendTimeout ||
         e.type == DioExceptionType.receiveTimeout) {
