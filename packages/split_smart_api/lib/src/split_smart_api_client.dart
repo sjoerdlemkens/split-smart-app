@@ -1,4 +1,5 @@
 import 'package:split_smart_api/src/services/auth_service.dart';
+import 'package:split_smart_api/src/services/user_service.dart';
 
 import 'core/core.dart';
 
@@ -6,6 +7,7 @@ import 'core/core.dart';
 class SplitSmartApi {
   late final ApiClient _apiClient;
   late final AuthService _authService;
+  late final UserService _userService;
 
   SplitSmartApi({
     required String baseUrl,
@@ -24,6 +26,7 @@ class SplitSmartApi {
 
     _apiClient = ApiClient(config: config);
     _authService = AuthService(_apiClient);
+    _userService = UserService(_apiClient);
   }
 
   /// Predefined constructor for development environment
@@ -40,4 +43,7 @@ class SplitSmartApi {
 
   /// Authentication service
   AuthService get auth => _authService;
+
+  /// User service
+  UserService get user => _userService;
 }

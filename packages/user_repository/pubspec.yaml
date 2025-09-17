@@ -1,14 +1,14 @@
 name: user_repository
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: Dart package which manages the user domain.
+publish_to: none
 
 environment:
   sdk: ^3.6.1
 
 # Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
+  split_smart_api:
+    path: ../split_smart_api
 
 dev_dependencies:
   lints: ^5.0.0

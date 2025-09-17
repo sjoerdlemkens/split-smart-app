@@ -30,4 +30,15 @@ class AuthRepository {
       throw const LoginFailure();
     }
   }
+
+
+  /// Logs out the user.
+  Future<void> logout() async {
+    await _apiClient.auth.logout();
+  }
+
+  /// Checks if the user is authenticated.
+  Future<bool> isAuthenticated() async {
+    return await _apiClient.auth.isAuthenticated;
+  }
 }

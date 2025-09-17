@@ -37,6 +37,8 @@ dependencies:
   equatable: ^2.0.7
   auth_repository:
     path: ./packages/auth_repository
+  user_repository:
+    path: ./packages/user_repository
 
 dev_dependencies:
   bloc_test: ^9.1.7

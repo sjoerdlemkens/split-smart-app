@@ -69,6 +69,17 @@ class ApiClient {
     await _tokenStorage.saveRefreshToken(authTokens.refreshToken);
   }
 
+  /// Clear authentication tokens
+  Future<void> clearAuthTokens() async {
+    await _tokenStorage.clearTokens();
+  }
+
+  /// Check if user is authenticated
+  Future<bool> get isAuthenticated async {
+    final token = await _tokenStorage.getAccessToken();
+    return token != null;
+  }
+
   /// Make a POST request
   Future<T> post<T>(
     String endpoint, {

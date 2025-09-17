@@ -17,4 +17,14 @@ class AuthService {
     // Store the token in the API client for future requests
     _apiClient.setAuthTokens(authTokens);
   }
+
+  /// Check if user is authenticated
+  Future<bool> get isAuthenticated async {
+    return await _apiClient.isAuthenticated;
+  }
+
+  /// Logout user (clear local tokens)
+  Future<void> logout() async {
+    await _apiClient.clearAuthTokens();
+  }
 }
