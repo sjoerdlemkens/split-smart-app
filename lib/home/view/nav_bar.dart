@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:split_smart_app/home/view/nav_bar_item.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({super.key});
+  final Function(int) onTabSelected;
+
+  const NavBar({
+    super.key,
+    required this.onTabSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +19,23 @@ class NavBar extends StatelessWidget {
           NavBarItem(
             icon: Icons.group,
             label: 'Friends',
-            onPressed: () {},
+            onPressed: () => onTabSelected(0),
           ),
           NavBarItem(
             icon: Icons.groups,
             label: 'Groups',
-            onPressed: () {},
+            onPressed: () => onTabSelected(1),
           ),
           const SizedBox(width: 30),
           NavBarItem(
             icon: Icons.history,
             label: 'Activity',
-            onPressed: () {},
+            onPressed: () => onTabSelected(2),
           ),
           NavBarItem(
             icon: Icons.settings,
             label: 'Settings',
-            onPressed: () {},
+            onPressed: () => onTabSelected(3),
           ),
         ],
       ),

@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+import 'package:split_smart_app/settings/settings.dart';
+
+class HomeContent extends StatelessWidget {
+  final int selectedTab;
+
+  const HomeContent({
+    super.key,
+    required this.selectedTab,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    switch (selectedTab) {
+      case 0:
+        return const Text('Friends');
+      case 1:
+        return const Text('Groups');
+      case 2:
+        return const Text('Activity');
+      case 3:
+        return const SettingsTab();
+    }
+
+    throw Exception('Invalid tab index: $selectedTab');
+  }
+}
