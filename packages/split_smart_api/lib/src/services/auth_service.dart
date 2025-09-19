@@ -3,6 +3,7 @@ import 'package:split_smart_api/src/models/models.dart';
 
 class AuthService {
   final ApiClient _apiClient;
+  // final TokenRefreshInterceptor _tokenRefreshInterceptor;
 
   AuthService(this._apiClient);
 
@@ -26,5 +27,11 @@ class AuthService {
   /// Logout user (clear local tokens)
   Future<void> logout() async {
     await _apiClient.clearAuthTokens();
+  }
+
+  /// Set or update the token refresh failure handler
+  /// This will be called when automatic token refresh fails
+  void setOnTokenRefreshFailed(void Function()? callback) {
+    _apiClient.tokenRefreshInterceptor.setOnTokenRefreshFailed(callback);
   }
 }

@@ -6,7 +6,7 @@ class TokenRefreshInterceptor extends Interceptor {
   final Dio dio;
   final TokenStorage tokenStorage;
   final String refreshEndpoint;
-  final void Function()? onTokenRefreshFailed;
+  void Function()? _onTokenRefreshFailed;
 
   bool _isRefreshing = false;
   final List<RequestOptions> _pendingRequests = [];
@@ -15,8 +15,13 @@ class TokenRefreshInterceptor extends Interceptor {
     required this.dio,
     required this.tokenStorage,
     this.refreshEndpoint = '/auth/refresh',
-    this.onTokenRefreshFailed,
-  });
+    void Function()? onTokenRefreshFailed,
+  }) : _onTokenRefreshFailed = onTokenRefreshFailed;
+
+  /// Update the token refresh failure callback
+  void setOnTokenRefreshFailed(void Function()? callback) {
+    _onTokenRefreshFailed = callback;
+  }
 
   @override
   void onRequest(
@@ -93,7 +98,7 @@ class TokenRefreshInterceptor extends Interceptor {
         } catch (refreshError) {
           // Token refresh failed
           await tokenStorage.clearTokens();
-          onTokenRefreshFailed?.call();
+          _onTokenRefreshFailed?.call();
           _pendingRequests.clear();
         }
       }

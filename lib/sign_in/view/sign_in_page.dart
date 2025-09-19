@@ -7,6 +7,9 @@ import 'package:split_smart_app/sign_in/view/sign_in_form.dart';
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
 
+  static const String routePath = '/signIn';
+  static const String routeName = 'signIn';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

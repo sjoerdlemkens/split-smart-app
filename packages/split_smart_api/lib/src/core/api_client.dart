@@ -43,6 +43,10 @@ class ApiClient {
     ));
   }
 
+  /// Expose the token refresh interceptor for AuthService
+  TokenRefreshInterceptor get tokenRefreshInterceptor =>
+      _tokenRefreshInterceptor;
+
   /// Make a GET request
   Future<T> get<T>(
     String endpoint, {
