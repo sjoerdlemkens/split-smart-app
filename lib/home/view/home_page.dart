@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:split_smart_app/auth/bloc/auth_bloc.dart';
+import 'package:split_smart_app/home/view/nav_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,26 +9,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Home'),
-            _UserEmail(),
-          ],
-        ),
+    return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Add Expense',
+        elevation: 2.0,
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
+      bottomNavigationBar: const NavBar(),
     );
-  }
-}
-
-class _UserEmail extends StatelessWidget {
-  const _UserEmail();
-
-  @override
-  Widget build(BuildContext context) {
-    final user = (context.read<AuthBloc>().state as AuthAuthenticated).user;
-    return Text(user.email);
   }
 }
