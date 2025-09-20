@@ -24,8 +24,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     /// Handle the auth status changed event
     on<AuthInit>(_onAuthInit);
-    on<Authenticated>(_onAuthenticated);
-    on<Unauthenticated>(_onUnauthenticated);
+    on<AuthLogoutRequested>(_onAuthLogoutRequested);
+    on<_Authenticated>(_onAuthenticated);
+    on<_Unauthenticated>(_onUnauthenticated);
   }
 
   void _onAuthInit(
@@ -35,10 +36,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final isAuthenticated = await _authRepo.isAuthenticated();
 
     if (isAuthenticated) {
-      add(const Authenticated());
+      add(const _Authenticated());
     } else {
       emit(AuthUnauthenticated());
     }
+  }
+
+  void _onAuthLogoutRequested(
+    AuthLogoutRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    await _authRepo.logout();
+    emit(AuthUnauthenticated());
+    add(const _Unauthenticated());
   }
 
   /// Handle the auth status changes from the auth repository
@@ -47,13 +57,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) =>
       add(
         status == AuthStatus.authenticated
-            ? const Authenticated()
-            : const Unauthenticated(),
+            ? const _Authenticated()
+            : const _Unauthenticated(),
       );
 
   /// Handle the authenticated event
   void _onAuthenticated(
-    Authenticated event,
+    _Authenticated event,
     Emitter<AuthState> emit,
   ) async {
     try {
@@ -66,7 +76,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   /// Handle the unauthenticated event
   void _onUnauthenticated(
-    Unauthenticated event,
+    _Unauthenticated event,
     Emitter<AuthState> emit,
   ) =>
       emit(AuthUnauthenticated());

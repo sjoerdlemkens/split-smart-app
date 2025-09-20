@@ -14,14 +14,19 @@ class AuthInit extends AuthEvent {
   const AuthInit();
 }
 
+/// Event to request logout.
+class AuthLogoutRequested extends AuthEvent {
+  const AuthLogoutRequested();
+}
+
 /// Event triggered when the user becomes authenticated.
 /// This can happen through login or when a valid token is found.
-class Authenticated extends AuthEvent {
-  const Authenticated();
+class _Authenticated extends AuthEvent {
+  const _Authenticated();
 }
 
 /// Event triggered when the user becomes unauthenticated.
 /// This can happen through logout or  token expiry
-class Unauthenticated extends AuthEvent {
-  const Unauthenticated();
+class _Unauthenticated extends AuthEvent {
+  const _Unauthenticated();
 }
