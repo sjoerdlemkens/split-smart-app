@@ -9,6 +9,8 @@ environment:
 dependencies:
   split_smart_api:
     path: ../split_smart_api
+  user_repository:
+    path: ../user_repository
   rxdart: ^0.28.0
 
 dev_dependencies:

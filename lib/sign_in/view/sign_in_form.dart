@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:go_router/go_router.dart';
 import 'package:split_smart_app/sign_in/sign_in.dart';
+import 'package:split_smart_app/sign_up/view/sign_up_page.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({super.key});
@@ -28,6 +30,8 @@ class SignInForm extends StatelessWidget {
             _PasswordInput(),
             const Padding(padding: EdgeInsets.all(12)),
             _LoginButton(),
+            const Padding(padding: EdgeInsets.all(8)),
+            _SignUpLink(),
           ],
         ),
       ),
@@ -93,6 +97,22 @@ class _LoginButton extends StatelessWidget {
           ? () => context.read<SignInBloc>().add(const LoginSubmitted())
           : null,
       child: const Text('Login'),
+    );
+  }
+}
+
+class _SignUpLink extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Don't have an account? "),
+        TextButton(
+          onPressed: () => context.go(SignUpPage.routePath),
+          child: const Text('Sign Up'),
+        ),
+      ],
     );
   }
 }

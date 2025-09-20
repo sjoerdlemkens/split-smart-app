@@ -8,11 +8,18 @@ class UserService {
 
   /// Get the logged in user
   Future<User> getLoggedIn() {
-    // Throw error when not authenticated.
-
     return _apiClient.get<User>(
       '/users/logged-in',
       fromJson: User.fromJson,
+    );
+  }
+
+  /// Create a new user account
+  Future<AuthTokens> signUp(SignUpRequest request) async {
+    return _apiClient.post<AuthTokens>(
+      '/auth/register',
+      data: request.toJson(),
+      fromJson: AuthTokens.fromJson,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:split_smart_api/src/services/auth_service.dart';
 import 'package:split_smart_api/src/services/user_service.dart';
+import 'package:split_smart_api/src/models/models.dart';
 
 import 'core/core.dart';
 
@@ -46,4 +47,9 @@ class SplitSmartApi {
 
   /// User service
   UserService get user => _userService;
+
+  /// Set authentication tokens
+  Future<void> setAuthTokens(AuthTokens tokens) async {
+    await _apiClient.setAuthTokens(tokens);
+  }
 }

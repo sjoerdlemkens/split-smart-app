@@ -9,4 +9,8 @@ class UserRepository {
 
   /// Get the logged in user
   Future<User> getLoggedInUser() => _apiClient.user.getLoggedIn();
+
+  /// Create a new user account
+  Future<AuthTokens> signUp(SignUpRequest request) =>
+      _apiClient.user.signUp(request);
 }

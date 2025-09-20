@@ -26,8 +26,12 @@ class AppRouter {
     final isAuthenticated = authBloc.state is AuthAuthenticated;
     final isUnAuthenticated = authBloc.state is AuthUnauthenticated;
 
-    if (isUnAuthenticated &&
-        !state.matchedLocation.contains(SignInPage.routePath)) {
+    // Allow unauthenticated users to access sign in and sign up pages
+    final allowedUnauthenticatedPaths = ['/signIn', '/signUp'];
+    final isAllowedUnauthenticatedPath = allowedUnauthenticatedPaths
+        .any((path) => state.matchedLocation.startsWith(path));
+
+    if (isUnAuthenticated && !isAllowedUnauthenticatedPath) {
       return SignInPage.routePath;
     } else if (isAuthenticated) {
       return HomePage.routePath;
