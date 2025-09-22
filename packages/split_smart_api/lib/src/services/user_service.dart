@@ -7,7 +7,8 @@ class UserService {
   UserService(this._apiClient);
 
   /// Get the logged in user
-  Future<User> getLoggedIn() {
+  Future<User> getLoggedIn() async {
+    await _apiClient.isAuthenticated;
     return _apiClient.get<User>(
       '/users/logged-in',
       fromJson: User.fromJson,
