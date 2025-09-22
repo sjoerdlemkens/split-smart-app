@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_smart_app/friends/friends_overview/friends_overview.dart';
 import 'package:split_smart_app/settings/settings.dart';
 
 class HomeContent extends StatelessWidget {
@@ -13,7 +14,7 @@ class HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (selectedTab) {
       case 0:
-        return const Text('Friends');
+        return const FriendsTab();
       case 1:
         return const Text('Groups');
       case 2:
