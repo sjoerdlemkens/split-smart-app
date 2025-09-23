@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:auth_repository/auth_repository.dart';
-import 'package:split_smart_app/sign_in/sign_in.dart';
+import 'package:split_smart_app/misc/misc.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_smart_app/friends/add_friend/add_friend.dart';
 
 class FriendsTab extends StatelessWidget {
   const FriendsTab({super.key});
@@ -13,11 +14,19 @@ class FriendsTab extends StatelessWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.add),
-              onPressed: () {},
+              onPressed: () => _showAddFriendDialog(context),
             ),
           ],
         ),
       ],
     );
+  }
+
+  Future<void> _showAddFriendDialog(BuildContext context) async {
+    final result = await AddFriendDialog.show(context);
+    if (result == true) {
+      // Friend request was sent successfully
+      // You can add additional logic here like refreshing the friends list
+    }
   }
 }
