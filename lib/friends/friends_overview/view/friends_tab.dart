@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:split_smart_app/friends/add_friend/add_friend.dart';
+import 'package:split_smart_app/friends/friends_overview/view/friends_overview.dart';
 
 class FriendsTab extends StatelessWidget {
   const FriendsTab({
@@ -8,7 +9,7 @@ class FriendsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
         AppBar(
           elevation: 1,
@@ -19,6 +20,9 @@ class FriendsTab extends StatelessWidget {
               onPressed: () => _showAddFriendDialog(context),
             ),
           ],
+        ),
+        const Expanded(
+          child: FriendsOverview(),
         ),
       ],
     );
