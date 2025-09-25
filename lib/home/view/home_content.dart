@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:split_smart_app/friends/friends_overview/friends_overview.dart';
 import 'package:split_smart_app/settings/settings.dart';
+import 'package:friends_repository/friends_repository.dart';
 
 class HomeContent extends StatelessWidget {
   final int selectedTab;

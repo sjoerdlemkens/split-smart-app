@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:split_smart_app/friends/add_friend/add_friend.dart';
 
 class FriendsTab extends StatelessWidget {
-  const FriendsTab({super.key});
+  const FriendsTab({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +26,10 @@ class FriendsTab extends StatelessWidget {
 
   Future<void> _showAddFriendDialog(BuildContext context) async {
     final result = await AddFriendDialog.show(context);
-    if (result == true) {
-      // Friend request was sent successfully
-      // You can add additional logic here like refreshing the friends list
-    }
+    if (result == true) _onFriendAdded();
+  }
+
+  void _onFriendAdded() {
+    // TODO: Refresh the friends list
   }
 }
