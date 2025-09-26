@@ -12,7 +12,7 @@ class AuthService {
     final authTokens = await _apiClient.post<AuthTokens>(
       '/auth/login',
       data: request.toJson(),
-      fromJson: AuthTokens.fromJson,
+      fromJson: (json) => AuthTokens.fromJson(json as Map<String, dynamic>),
     );
 
     // Store the token in the API client for future requests

@@ -33,9 +33,20 @@ class _ProvidedFriendsOverview extends StatelessWidget {
   }
 
   Widget _buildLoaded(List<Friend> friends) {
+    if (friends.isEmpty) {
+      return const Center(
+        child: Text('No friends'),
+      );
+    }
+
     return ListView.builder(
-      itemBuilder: (context, index) => Text(
-        friends[index].email,
+      itemCount: friends.length,
+      padding: EdgeInsets.zero,
+      itemBuilder: (context, index) => ListTile(
+        title: Text(friends[index].email),
+        onTap: () {
+          print('tapped friend');
+        },
       ),
     );
   }

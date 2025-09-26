@@ -11,7 +11,7 @@ class UserService {
     await _apiClient.isAuthenticated;
     return _apiClient.get<User>(
       '/users/logged-in',
-      fromJson: User.fromJson,
+      fromJson: (json) => User.fromJson(json as Map<String, dynamic>),
     );
   }
 
@@ -20,7 +20,7 @@ class UserService {
     return _apiClient.post<AuthTokens>(
       '/auth/register',
       data: request.toJson(),
-      fromJson: AuthTokens.fromJson,
+      fromJson: (json) => AuthTokens.fromJson(json as Map<String, dynamic>),
     );
   }
 }

@@ -51,10 +51,10 @@ class ApiClient {
   Future<T> get<T>(
     String endpoint, {
     Map<String, String>? queryParameters,
-    T Function(Map<String, dynamic>)? fromJson,
+    T Function(dynamic)? fromJson,
   }) async {
     try {
-      final response = await _dio.get<Map<String, dynamic>>(
+      final response = await _dio.get<dynamic>(
         endpoint,
         queryParameters: queryParameters,
       );
@@ -89,10 +89,10 @@ class ApiClient {
     String endpoint, {
     Object? data,
     Map<String, String>? queryParameters,
-    T Function(Map<String, dynamic>)? fromJson,
+    T Function(dynamic)? fromJson,
   }) async {
     try {
-      final response = await _dio.post<Map<String, dynamic>>(
+      final response = await _dio.post<dynamic>(
         endpoint,
         data: data,
         queryParameters: queryParameters,
@@ -111,10 +111,10 @@ class ApiClient {
     String endpoint, {
     Object? data,
     Map<String, String>? queryParameters,
-    T Function(Map<String, dynamic>)? fromJson,
+    T Function(dynamic)? fromJson,
   }) async {
     try {
-      final response = await _dio.put<Map<String, dynamic>>(
+      final response = await _dio.put<dynamic>(
         endpoint,
         data: data,
         queryParameters: queryParameters,
@@ -132,10 +132,10 @@ class ApiClient {
   Future<T> delete<T>(
     String endpoint, {
     Map<String, String>? queryParameters,
-    T Function(Map<String, dynamic>)? fromJson,
+    T Function(dynamic)? fromJson,
   }) async {
     try {
-      final response = await _dio.delete<Map<String, dynamic>>(
+      final response = await _dio.delete<dynamic>(
         endpoint,
         queryParameters: queryParameters,
       );
@@ -150,8 +150,8 @@ class ApiClient {
 
   /// Handle Dio response and convert to appropriate type
   T _handleResponse<T>(
-    Response<Map<String, dynamic>> response,
-    T Function(Map<String, dynamic>)? fromJson,
+    Response<dynamic> response,
+    T Function(dynamic)? fromJson,
   ) {
     final data = response.data;
 
@@ -159,8 +159,11 @@ class ApiClient {
       return (data?.toString() ?? '') as T;
     }
 
-    if (data == null || data.isEmpty) {
-      // Handle empty successful responses
+    if (data == null) {
+      // Handle null responses
+      if (T == List) {
+        return <dynamic>[] as T;
+      }
       return {} as T;
     }
 
