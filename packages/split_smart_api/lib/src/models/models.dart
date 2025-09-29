@@ -4,3 +4,5 @@ export 'auth_tokens.dart';
 export 'user.dart';
 export 'add_friend_request.dart';
 export 'friend.dart';
+export 'group.dart';
+export 'create_group_request.dart';

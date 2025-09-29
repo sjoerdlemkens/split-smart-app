@@ -1,0 +1,16 @@
+name: groups_repository
+description: Repository for managing groups data in SplitSmart app
+version: 1.0.0+1
+publish_to: "none"
+
+environment:
+  sdk: ^3.5.2
+
+dependencies:
+  split_smart_api:
+    path: ../split_smart_api
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0

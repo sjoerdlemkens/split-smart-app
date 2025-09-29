@@ -1,6 +1,7 @@
 import 'package:split_smart_api/src/services/auth_service.dart';
 import 'package:split_smart_api/src/services/user_service.dart';
 import 'package:split_smart_api/src/services/friends_service.dart';
+import 'package:split_smart_api/src/services/groups_service.dart';
 import 'package:split_smart_api/src/models/models.dart';
 
 import 'core/core.dart';
@@ -11,6 +12,7 @@ class SplitSmartApi {
   late final AuthService _authService;
   late final UserService _userService;
   late final FriendsService _friendsService;
+  late final GroupsService _groupsService;
 
   SplitSmartApi({
     required String baseUrl,
@@ -31,6 +33,7 @@ class SplitSmartApi {
     _authService = AuthService(_apiClient);
     _userService = UserService(_apiClient);
     _friendsService = FriendsService(_apiClient);
+    _groupsService = GroupsService(_apiClient);
   }
 
   /// Predefined constructor for development environment
@@ -53,6 +56,9 @@ class SplitSmartApi {
 
   /// Friends service
   FriendsService get friends => _friendsService;
+
+  /// Groups service
+  GroupsService get groups => _groupsService;
 
   /// Set authentication tokens
   Future<void> setAuthTokens(AuthTokens tokens) async {
