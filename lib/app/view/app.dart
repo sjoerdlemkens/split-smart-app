@@ -2,6 +2,7 @@ import 'package:auth_repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:friends_repository/friends_repository.dart';
+import 'package:groups_repository/groups_repository.dart';
 import 'package:split_smart_api/split_smart_api.dart';
 import 'package:user_repository/user_repository.dart';
 import 'app_view.dart';
@@ -34,6 +35,9 @@ class _AppState extends State<App> {
         ),
         RepositoryProvider(
           create: (context) => FriendsRepository(apiClient: apiClient),
+        ),
+        RepositoryProvider(
+          create: (context) => GroupsRepository(apiClient: apiClient),
         ),
       ],
       child: const AppView(),

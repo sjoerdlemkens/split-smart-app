@@ -35,16 +35,18 @@ dependencies:
   cupertino_icons: ^1.0.8
   formz: ^0.8.0
   equatable: ^2.0.7
+  rxdart: ^0.28.0
+  go_router: ^16.1.0
   auth_repository:
     path: ./packages/auth_repository
   user_repository:
     path: ./packages/user_repository
   friends_repository:
     path: ./packages/friends_repository
+  groups_repository:
+    path: ./packages/groups_repository
   split_smart_api:
     path: ./packages/split_smart_api
-  rxdart: ^0.28.0
-  go_router: ^16.1.0
 
 dev_dependencies:
   bloc_test: ^9.1.7

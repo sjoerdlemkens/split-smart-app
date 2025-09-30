@@ -7,15 +7,11 @@ part 'group.g.dart';
 class Group extends Equatable {
   final String id;
   final String name;
-  final String? description;
-  final List<String> members;
   final DateTime createdAt;
 
   const Group({
     required this.id,
     required this.name,
-    this.description,
-    this.members = const [],
     required this.createdAt,
   });
 
@@ -25,8 +21,6 @@ class Group extends Equatable {
   List<Object?> get props => [
         id,
         name,
-        description,
-        members,
         createdAt,
       ];
 }

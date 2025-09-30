@@ -9,15 +9,9 @@ class GroupsRepository {
   final SplitSmartApi _apiClient;
 
   /// Create a new group
-  Future<Group> createGroup({
-    required String name,
-    String? description,
-    List<String> memberEmails = const [],
-  }) async {
+  Future<Group> createGroup({required String name}) async {
     final request = CreateGroupRequest(
       name: name,
-      description: description,
-      memberEmails: memberEmails,
     );
     return await _apiClient.groups.createGroup(request);
   }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:split_smart_app/friends/friends_overview/friends_overview.dart';
+import 'package:split_smart_app/groups/groups_overview/groups_overview.dart';
 import 'package:split_smart_app/settings/settings.dart';
-import 'package:friends_repository/friends_repository.dart';
 
 class HomeContent extends StatelessWidget {
   final int selectedTab;
@@ -18,7 +17,7 @@ class HomeContent extends StatelessWidget {
       case 0:
         return const FriendsTab();
       case 1:
-        return const Text('Groups');
+        return const GroupsTab();
       case 2:
         return const Text('Activity');
       case 3:

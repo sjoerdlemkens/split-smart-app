@@ -6,20 +6,6 @@ import 'package:split_smart_app/friends/friends_overview/bloc/friends_overview_b
 class FriendsOverview extends StatelessWidget {
   const FriendsOverview({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => FriendsOverviewBloc(
-        friendsRepository: context.read<FriendsRepository>(),
-      )..add(const LoadFriends()),
-      child: const _ProvidedFriendsOverview(),
-    );
-  }
-}
-
-class _ProvidedFriendsOverview extends StatelessWidget {
-  const _ProvidedFriendsOverview();
-
   Widget _buildLoading() {
     return const Center(
       child: CircularProgressIndicator(),
